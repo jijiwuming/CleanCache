@@ -1,0 +1,32 @@
+<?xml version='1.0' encoding='utf-8'?>
+<plugin id="CleanCache" version="0.0.1" xmlns="http://apache.org/cordova/ns/plugins/1.0" xmlns:android="http://schemas.android.com/apk/res/android">
+    <name>CleanCache</name>
+    <js-module name="CleanCache" src="www/CleanCache.js">
+        <clobbers target="cordova.plugins.CleanCache" />
+    </js-module>
+     <platform name="android">  
+        <config-file target="res/xml/config.xml" parent="/*">  
+            <feature name="CleanCache">  
+                <param name="android-package" value="io.jijiwuming.github.Call"/>  
+            </feature>  
+        </config-file>  
+        <source-file src="src/android/Call.java" target-dir="src/io/jijiwuming/github" />  
+        <source-file src="src/android/Clear.java" target-dir="src/io/jijiwuming/github" />
+        <config-file target="AndroidManifest.xml" parent="/manifest/application"> 
+        	<activity android:name="io.jijiwuming.github.Clear" />  
+        </config-file>  
+    </platform>
+    <platform name="ios">
+　　　　　　<config-file target="config.xml" parent="/*">
+　　　　　　　　<!-- 替换插件类名 -->
+　　　　　　　　<feature name="CleanCache">
+　　　　　　　　　　<param name="ios-package" value="CleanCache"/>
+　　　　　　　　</feature>
+　　　　　　</config-file>
+　　　　<!-- 引用插件的源文件，按照这种格式把所有的原生类的文件引入 -->
+　　　　　　<source-file src="src/ios/CleanCache.m" />
+　　　　　　<header-file src="src/ios/CleanCache.h" />
+　　　　　　<!-- 引用插件的需要支持的框架，没有引用平台可以注释调 -->
+　　　　　　<!-- <framework src="AudioToolbox.framework" weak="true" /> -->
+　　　　</platform>  
+</plugin>
